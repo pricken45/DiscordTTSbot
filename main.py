@@ -40,8 +40,8 @@ async def say(ctx, *args):
     soundObj = gTTS(text=sentence, lang=ttsLang, slow=True)
     soundObj.save("sound.mp3")
 
-    os.system("ffmpeg.exe -i sound.mp3 -y -af asetrate=24000*0.7,aresample=24000 output.mp3")
-    os.system('ffmpeg.exe -i output.mp3 -y -filter:a "volume=2" newoutput.mp3')
+    os.system("ffmpeg -i sound.mp3 -y -af asetrate=24000*0.7,aresample=24000 output.mp3")
+    os.system('ffmpeg -i output.mp3 -y -filter:a "volume=2" newoutput.mp3')
     await ctx.channel.send("Nu säger jag " + sentence + " 🥺🥺🤠🤓🧐🧐")
 
     vc = ctx.voice_client
